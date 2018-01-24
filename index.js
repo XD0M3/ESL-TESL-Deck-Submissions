@@ -215,18 +215,17 @@
         league = league.replace("#", "");
         $('#mainform').after('<button onclick="removeTheDumb(' + league + ')">Deck Submissions</button>');
         var s = document.createElement('script');
-        s.innerHTML = 'function removeTheDumb(test){var c=$("#mainform").find("table");var c=c["0"].children["0"].children;var constants=[];for(var l=0;l<c.length;l++){var bc=c[l].bgColor;if(bc=="#E3E0DD"||bc=="#F5F4F3"){constants.push(c[l])}}con=constants;var xmlhttp=new XMLHttpRequest();xmlhttp.onreadystatechange=function(){if(this.readyState==4&&this.status==200){var myObj=JSON.parse(this.responseText);console.log(myObj); console.log(con);for(var j=0;j<con.length-1;j++){con[j.toString()].cells[5].childNodes["0"].checked=true}}};xmlhttp.open("GET","https://xd0m3.eu/esl/decks.php?cup="+test,true);xmlhttp.send()}';
+        s.innerHTML = 'function removeTheDumb(test){var c=$("#mainform").find("table");var c=c["0"].children["0"].children;var constants=[];for(var l=0;l<c.length;l++){var bc=c[l].bgColor;if(bc=="#E3E0DD"||bc=="#F5F4F3"){constants.push(c[l])}}con=constants;var xmlhttp=new XMLHttpRequest();xmlhttp.onreadystatechange=function(){if(this.readyState==4&&this.status==200){var myObj=JSON.parse(this.responseText);console.log(myObj); console.log(con);for(var j=0;j<con.length-1;j++){con[j.toString()].cells[5].childNodes["0"].checked=true}for(var j=0;j<con.length-1;j++){var id=con[j.toString()].cells["2"].innerText;for(var z=0;z<myObj.length;z++){console.log("ID: "+myObj[z.toString()].user_id+" 2nd ID: "+id);if(myObj[z.toString()].user_id==id){con[j.toString()].cells[5].childNodes["0"].checked=false}}}}};xmlhttp.open("GET","https://xd0m3.eu/esl/decks.php?cup="+test,true);xmlhttp.send()}';
         document.body.appendChild(s);
-
-        for(var j = 0; j < con.length-1; j++){
-          var id = con[j.toString()].cells["2"].innerText;
-          for(var z = 0; z < myObj.length;z++){
-            console.log("ID: " + myObj[z.toString()].user_id + " 2nd ID: " + id);
-            if(myObj[z.toString()].user_id == id){
-              con[j.toString()].cells[5].childNodes["0"].checked = false;
-            }
-          }
+        /*for(var j = 0; j < con.length-1; j++){
+          con["0"].cells[5].childNodes["0"].checked = true;
         }
+        for(var j = 0; j < con.length-1; j++){
+          var id = con["0"].cells["2"].innerText;
+          for(var z = 0; z < myObj.length;z++){
+            if(myObj[z].user_id != id)
+          }
+        }*/
       }
     }
     if(Page.isTicket()){
