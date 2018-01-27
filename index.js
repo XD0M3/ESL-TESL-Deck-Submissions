@@ -178,7 +178,7 @@
             for(var i = 0; i < s.length;i++){
                 var io = s[i].innerText;
                 if(io == strings[0]){
-                    var e = s[i].href;
+                     var e = s[i].href;
                     e = e.split("/player/");
                     e = e[1];
                     e = e.split("/");
@@ -232,15 +232,16 @@
       console.log(window.location.href.indexOf("/go4tesl-global/"));
       if(Page.isTesl()){
         var creator = InformationSupport.getTicketCreator();
-        var creator_id = creator[0];
-        var x = creator[1];
+        var creator_id = creator[1];
+        console.log(creator);
+        var x = creator[0];
         var SupportId = InformationSupport.getSupportId();
         var League = InformationSupport.getLeague();
         var league = League[1];
         league = league.split(" ");
         league = league[2];
         league = league.replace("#","");
-
+        console.log(x + "|"+creator_id+"|"+SupportId+"|"+league);
         $('select[name="what"]').after("<a id='sub'>Deck submit</a>");
         var link = 'https://xd0m3.eu/esl/add.php?name=' + x + "&cid=" + creator_id + "&sid=" + SupportId + "&league=" + league;
         $('#sub').attr("href", link);
