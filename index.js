@@ -174,6 +174,9 @@
             strings = strings.split("Requester	");
             strings[1] = strings[1].split("	All");
             strings[0]=strings[1][0];
+            strings[0] = strings[0].split(" (");
+            strings[0] = strings[0][0];
+
             var s = $("a[href*='yer']");
             for(var i = 0; i < s.length;i++){
                 var io = s[i].innerText;
